@@ -26,7 +26,7 @@
                 <div class="menu__child">
                     <ul class="menu__child-list">
                         <li class="menu__child-item">
-                            <a href="<?= $data["slug"]?>" class="menu__child-link">
+                            <a href="dien_thoai" class="menu__child-link">
                             <i class="fal fa-mobile"></i>Điện thoại <i class="far fa-angle-right"></i>
                             </a>
                             <div class="menu__grandchild">

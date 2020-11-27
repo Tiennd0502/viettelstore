@@ -194,5 +194,6 @@ $(function() {
     $(".js-closesort ~ a").click(function() {
         $(".js-closesort ~ a").removeClass("check");
         $(this).addClass("check");
-    });
+    });     
+    
 })

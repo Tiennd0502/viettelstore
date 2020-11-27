@@ -2,7 +2,7 @@
  
  	class DataBase{
 	 	public $db ;
-		protected $dsn      = "mysql:host=localhost;dbname=viettel_store";
+		protected $dsn      = "mysql:host=localhost;dbname=pro1014";
 		protected $userName = "root";
 		protected $password = "";
 
