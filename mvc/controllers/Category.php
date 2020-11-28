@@ -2,10 +2,7 @@
 	
 	class Category extends Controller{
 
-		public $breadcrumb   = "Bảng điều khiển";
-		public $admin_navbar = "admin_navbar";
-		public $current      = "Category";
-
+		
 		public $CategoryModel;
 		public function __construct(){
 			$this->CategoryModel = $this->model("CategoryModel");
@@ -20,7 +17,7 @@
 			  							"ListCategory" => $list
 			  						]);
 			}else {
-	  		echo '<h3> Vui lòng <a href="admin" >đăng nhập</a> trước khi sử dụng chức năng</h3>';
+	  		echo '<h3> Vui lòng <a href="Admin" >đăng nhập</a> trước khi sử dụng chức năng</h3>';
 	  		exit;
 	  	}
 		}
@@ -28,28 +25,18 @@
 
 			if(isset($_POST['addCategory'])){
 				$data              = array();
-				$data["name"]      = $_POST["name"];
-				$data["slug"]      = $_POST["slug"];
-				$data["icon"]      = $_POST["icon"];
+				$data["name"]      = trim($_POST["name"]);
+				$data["slug"]      = str_replace([" ","_"],"-",strtolower(trim($_POST["slug"])));
+				$data["icon"]      = trim($_POST["icon"]);
 		  	// Insert vào bảng
 		  	$result =$this->CategoryModel->InsertCategory($data);		
 				$this->view("admin",[
-			  							// "Admin_navbar" => $this->admin_navbar,
-			  							// "Current"		=> $this->current,
 			  							"Page" => "category_add",
-			  							// "Page_title"=>"admin_header", 
-			  							// "Title" => "Loại hàng",
-		  								// "Breadcrumb" => $this->breadcrumb,
-		  								"Result" => $result
+		  								"Result" => $result,
 			  						]);
 			}else {
 				$this->view("admin",[
-			  							"Admin_navbar" => $this->admin_navbar,
-			  							"Current"		=> $this->current,
 			  							"Page" => "category_add",
-			  							"Page_title"=>"admin_header", 
-			  							"Title" => "Loại hàng",
-		  								"Breadcrumb" => $this->breadcrumb,
 			  						]);
 			}
 		}
@@ -58,31 +45,21 @@
 			if(isset($_POST["updateCategory"])){
 				$data              = array();
 				$data["id"]				 = $_POST["id"];
-				$data["name"]      = $_POST["name"];
-				$data["slug"]      = $_POST["slug"];
-				$data["icon"]      = $_POST["icon"];
+				$data["name"]      = trim($_POST["name"]);
+				$data["slug"]      = str_replace([" ","_"],"-",strtolower(trim($_POST["slug"])));
+				$data["icon"]      = trim($_POST["icon"]);
 	  		$result = $this->CategoryModel ->UpdateCategory($data);
 	  		if($result == "true"){
 	  			$list = $this->CategoryModel->AllCategorys();
 					$this->view("admin",[
-				  							"Admin_navbar" => $this->admin_navbar,
-				  							"Current"		=> $this->current,
 				  							"Page" => "category_list",
-				  							"Page_title"=>"admin_header", 
-				  							"Title" => "Loại hàng",
-			  								"Breadcrumb" => $this->breadcrumb,
 			  								"ListCategory" => $list,
 			  								"Result" => $result,
 				  						]);
 	  		}else {
 	  			$item = $this->CategoryModel ->GetOneCategory($id);
 	  			$this->view("admin",[
-			  							"Admin_navbar" => $this->admin_navbar,
-			  							"Current"		=> $this->current,
 			  							"Page" => "category_add",
-			  							"Page_title"=>"admin_header", 
-			  							"Title" => "Loại hàng",
-		  								"Breadcrumb" => $this->breadcrumb,
 		  								"Item" => $item,
 		  								"Result" => $result,
 			  						]);
@@ -90,13 +67,8 @@
 	  	}else {
 	  		$item = $this->CategoryModel ->GetOneCategory($id);
 	  		$this->view("admin",[
-			  							"Admin_navbar" => $this->admin_navbar,
-			  							"Current"		=> $this->current,
 			  							"Page" => "category_add",
-			  							"Page_title"=>"admin_header", 
-			  							"Title" => "Loại hàng",
-		  								"Breadcrumb" => $this->breadcrumb,
-		  								"Item" => $item
+		  								"Item" => $item,
 			  						]);
 	  	}
 		}
@@ -105,12 +77,7 @@
 			$result = $this->CategoryModel ->DeleteCategory($id);
 			$list = $this->CategoryModel->AllCategorys();
 			$this->view("admin",[
-				  							"Admin_navbar" => $this->admin_navbar,
-				  							"Current"		=> $this->current,
 				  							"Page" => "category_list",
-				  							"Page_title"=>"admin_header", 
-				  							"Title" => "Loại hàng",
-			  								"Breadcrumb" => $this->breadcrumb,
 			  								"ListCategory" => $list,
 			  								"Result" => $result,
 			  								"Delete" => ""

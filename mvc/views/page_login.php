@@ -31,7 +31,11 @@
                   <h5 class="text-uppercase mb-1 mt-4">Đăng nhập</h5>
                   <p class="mb-0">Đăng nhập vào tại khoản quản trị</p>
                 </div>
-
+                <?php if (isset($data["Error"])): ?>
+                    <div class="mt-2 mb-2" id="errorMessage" style="color: #d0021b">
+                  Tên đăng nhập hoặc Mật khẩu không đúng!
+                    </div>
+                  <?php endif ?>
                 <div class="account-content mt-4">
                   <form class="form-horizontal" action="Admin" method="post" accept-charset="utf-8" autocomplete="off">
                     <div class="form-group row">

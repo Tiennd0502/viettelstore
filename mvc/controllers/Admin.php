@@ -23,7 +23,8 @@
 	  		if (isset($_POST["login"])) {
 		  	  $data =	array();
 		  	  $data["username"] = $_POST["username"];
-		  	  $data["password"] = $_POST["password"];
+
+		  	  $data["password"] = trim($_POST["password"]);
 		  	  $data["remember"] = 0;
 		  	  if(isset($_POST["remember"])){
 		  	  	$data["remember"] = 1;

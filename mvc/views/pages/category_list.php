@@ -62,8 +62,8 @@
               <td><?= $value["created_time"]?></td>
               <td><?= $value["updated_time"]?></td>
               <td>
-                <a class="btn btn-outline-primary" href="category/EditCategory/<?= $value["id"]?>">Sửa</a>
-                <a class="btn btn-outline-danger" href="category/DeleteCategory/<?= $value["id"]?>" onclick=" return confirm('Bạn có chắc muốn xóa k');">Xóa</a>
+                <a class="btn btn-outline-primary" href="Category/EditCategory/<?= $value["id"]?>">Sửa</a>
+                <a class="btn btn-outline-danger" href="Category/DeleteCategory/<?= $value["id"]?>" onclick=" return confirm('Bạn có chắc muốn xóa k');">Xóa</a>
               </td>
             </tr>
         <?php } ?>
@@ -76,27 +76,3 @@
     <a href="Category/AddCategory" class="btn btn-success" >Thêm danh mục</a>
 
 </form>
-<!--
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->

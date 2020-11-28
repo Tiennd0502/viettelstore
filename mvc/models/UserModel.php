@@ -3,15 +3,26 @@
 	class UserModel extends DataBase{
 
 		public function Login($data){
-			$sql = "SELECT * FROM users WHERE `username` = '".$data['username']."' AND `password` = '".$data['password']."' AND `status`= '1'";
+			$sql = "SELECT * FROM users WHERE `username` = '".$data['username']."'";
 			$result = false;
 			if($this->db->query($sql)){
-				$result = $this->db->query($sql)->Fetch(PDO::FETCH_ASSOC);
+				$check = $this->db->query($sql)->Fetch(PDO::FETCH_ASSOC);
+				if (!empty($check)) {
+					$hash = $check["password"];
+					if (password_verify($data['password'], $hash)) {
+					  return json_encode($check);
+					} else {
+					  return json_encode($result);
+					}
+				}else {
+					return json_encode($result);
+				}
 			}
 			return json_encode($result);			
 		}
 		public function InsertNewUser($data){
-			$sql = "INSERT INTO users VALUES('','".$data['userName']."','".$data['password']."','".$data['fullName']."','".$data['avatar']."','".$data['email']."','".$data['phone']."','".$data['address']."','1','0',".time()."','')";
+			$password = password_hash($data['password'], PASSWORD_DEFAULT);
+			$sql = "INSERT INTO users VALUES('','".$data['userName']."','".$password."','".$data['fullName']."','".$data['avatar']."','".$data['email']."','".$data['phone']."','".$data['address']."','1','0',".time()."','')";
 			$result = false;
 			if($this->db -> exec($sql)){
 				$result = true;
