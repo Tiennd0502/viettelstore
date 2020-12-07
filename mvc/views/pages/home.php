@@ -1,3 +1,12 @@
+<?php 
+  if (isset($data["Categorys"])) {
+    $categorys = json_decode($data["Categorys"],TRUE);
+  }
+  if (isset($data["Mobile"])) {
+    $mobiles = json_decode($data["Mobile"],TRUE);
+  }
+  
+ ?>
 <div class="row">
   <div class="col-12 banner">
     <a href="">
@@ -142,144 +151,211 @@
 </div>
 <div class="row">
   <div class="product__list">
-    <a href="" class="product__item">
+    <?php foreach ($mobiles as $mobile): ?>
+
+    <a href="Dien-thoai/Detail/<?= $mobile["id"]?>" class="product__item">
       <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
+        <div class="product__name"><?= $mobile["name"]?></div> 
         <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
+
+        <?php if ($mobile["discount"] != 0) { ?>
+          <?= number_format(round($mobile["price"] - $mobile["price"] * $mobile["discount"] / 100, -4),0,",", ".")  ?>₫
+          <span class="product__saleprice"><?= number_format($mobile["price"],0,",",".") ?>₫</span>
+        <?php }else { ?>
+          <?= number_format($mobile["price"],0,",", ".") ?>₫
+        <?php }?>
+
         </div>
         <div class="label-promo">
           <i class="icon icon-limit">Số lượng có hạn</i>
         </div>
       </div>
       <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
+        <img src="./public/images/avatar_hot<?= $mobile["image_hot"]?>" alt="">
       </div>
     </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>
-    <a href="" class="product__item">
-      <div class="product__infor">
-        <div class="product__name">Samsung Galaxy Note20</div> 
-        <div class="product__price">
-          20.990.000 ₫
-          <span class="product__saleprice">23.990.000 ₫</span>
-        </div>
-        <div class="label-promo">
-          <i class="icon icon-limit">Số lượng có hạn</i>
-        </div>
-      </div>
-      <div class="product__img">
-        <img src="./public/images/Note20-t11-2.jpg" alt="">
-      </div>
-    </a>  
+
+    <?php endforeach ?>  
   </div>
 </div>
 <div class="row">
+  <div class="col-12 wear-and-watch">
+    <div class="title">LAPTOP BÁN CHẠY</div>
+    <div id="slide-laptop" class="owl-carousel owl-theme product-slide">
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/9869185387.jpeg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/148594375.jpg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/9869185387.jpeg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/148594375.jpg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/9869185387.jpeg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/148594375.jpg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/9869185387.jpeg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/148594375.jpg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/9869185387.jpeg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+      <div class="item ">
+        <a class="product laptop" href="">
+          <img class="product__img" src="./public/images/148594375.jpg" alt="">
+          <div class="label-promo">
+              <!-- <i class="icon icon-limit">-3%</i><br> -->
+              <i class="icon icon-installment"> Trả góp 0%</i>
+          </div>
+          <div class="product__name">MTXT Dell G3 15 3590/ i7-9750H/ 2x4GB/ 512GB SSD/ 6GB GTX 1660Ti/ 15.6</div>
+          <div class="product__price">
+              30.990.000 ₫
+              <!-- <span class="product__saleprice">13.490.00 ₫</span> -->
+          </div>
+          <p class="product__promo-message">
+          Miễn phí trả góp khi thanh toán online qua thẻ tín dụng của 23 Ngân hàng trong danh sách. và 5 khuyễn mãi khác
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 1.5rem;">
   <div class="col-12 wear-and-watch">
     <div class="title">THIẾT BỊ ĐEO VÀ ĐỒNG HỒ</div>
     <div id="slide-watch" class="owl-carousel owl-theme product-slide">

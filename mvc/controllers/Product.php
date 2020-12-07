@@ -52,19 +52,12 @@
 					if (isset($_FILES["image_hot"])) {
 						$data["image_hot"]               = $_FILES["image_hot"];
 					}
-					if (isset($_FILES["icon"])) {
-						$data["icon"]                = $_FILES["icon"];
-					}
 					if(isset($_FILES["library"])){
 						$data["library"]             = $_FILES["library"];
-					}
-					if(isset($_FILES["carousel"])){
-						$data["carousel"]            = $_FILES["carousel"];
 					}
 					$data["price"]                 = $_POST["price"];
 					$data["discount"]              = $_POST["discount"];
 					$data["description"]           = $_POST["description"];
-					$data["gift"]                  = $_POST["gift"];
 					$data["hot"]                   = $_POST["hot"];
 					$data["installment"]           = $_POST["installment"];
 					$data["active"]                = $_POST["active"];
@@ -84,18 +77,6 @@
 					$data["design"]                = $_POST["design"];
 					$data["size"]                  = $_POST["size"];
 					$data["launch_time"]           = $_POST["launch_time"];
-					$data["optical_drive"]         = $_POST["optical_drive"];
-					$data["machine_type"]          = $_POST["machine_type"];
-					$data["function"]              = $_POST["function"];
-					$data["wattage"]               = $_POST["wattage"];
-					$data["print_speed"]           = $_POST["print_speed"];
-					$data["printing_life"]         = $_POST["printing_life"];
-					$data["print_quality"]         = $_POST["print_quality"];
-					$data["ink_types"]             = $_POST["ink_types"];
-					$data["first_page_time"]       = $_POST["first_page_time"];
-					$data["where_product"]         = $_POST["where_product"];
-					$data["printer_compatibility"] = $_POST["printer_compatibility"];
-					$data["max_printer_page"]      = $_POST["max_printer_page"];
 					$data["face_diameter"]         = $_POST["face_diameter"];
 					$data["face_material"]         = $_POST["face_material"];
 					$data["frame_material"]        = $_POST["frame_material"];
@@ -158,14 +139,8 @@
 					if (isset($_FILES["image_hot"])) {
 						$data["image_hot"]               = $_FILES["image_hot"];
 					}
-					if (isset($_FILES["icon"])) {
-						$data["icon"]                = $_FILES["icon"];
-					}
 					if(isset($_FILES["library"])){
 						$data["library"]             = $_FILES["library"];
-					}
-					if(isset($_FILES["carousel"])){
-						$data["carousel"]            = $_FILES["carousel"];
 					}
 					// $data["linkImage"]						 = $_POST["linkImage"];
 					// $data["linkIcon"]						 	 = $_POST["linkIcon"];
@@ -173,7 +148,6 @@
 					$data["price"]                 = $_POST["price"];
 					$data["discount"]              = $_POST["discount"];
 					$data["description"]           = $_POST["description"];
-					$data["gift"]                  = $_POST["gift"];
 					$data["hot"]                   = $_POST["hot"];
 					$data["installment"]           = $_POST["installment"];
 					$data["active"]                = $_POST["active"];
@@ -193,18 +167,6 @@
 					$data["design"]                = $_POST["design"];
 					$data["size"]                  = $_POST["size"];
 					$data["launch_time"]           = $_POST["launch_time"];
-					$data["optical_drive"]         = $_POST["optical_drive"];
-					$data["machine_type"]          = $_POST["machine_type"];
-					$data["function"]              = $_POST["function"];
-					$data["wattage"]               = $_POST["wattage"];
-					$data["print_speed"]           = $_POST["print_speed"];
-					$data["printing_life"]         = $_POST["printing_life"];
-					$data["print_quality"]         = $_POST["print_quality"];
-					$data["ink_types"]             = $_POST["ink_types"];
-					$data["first_page_time"]       = $_POST["first_page_time"];
-					$data["where_product"]         = $_POST["where_product"];
-					$data["printer_compatibility"] = $_POST["printer_compatibility"];
-					$data["max_printer_page"]      = $_POST["max_printer_page"];
 					$data["face_diameter"]         = $_POST["face_diameter"];
 					$data["face_material"]         = $_POST["face_material"];
 					$data["frame_material"]        = $_POST["frame_material"];
@@ -220,14 +182,7 @@
 					if ($result) {
 						$products = $this->ProductModel->Allproducts();
 						$this->view("admin",[
-											"Admin_navbar" => $this->admin_navbar,
-											"Current" => $this->current,
 			  							"Page" => "product_list",
-			  							"Page_title"=>"admin_header", 
-			  							"Title" => $this->title,
-			  							"Current_title" => "Danh sách hàng hóa",
-			  							"Path"	=> $this->path,
-		  								"Breadcrumb" => $this->breadcrumb,
 		  								"Categorys" => $categorys,
 		  								"Trademarks" => $trademarks,
 		  								"Products"	=> $products,
@@ -237,14 +192,7 @@
 					}else{
 						$item = $this->ProductModel->GetOneProduct($id);
 						$this->view("admin",[
-											"Admin_navbar" => $this->admin_navbar,
-											"Current" => $this->current,
 			  							"Page" => "product_add",
-			  							"Page_title"=>"admin_header", 
-			  							"Title" => $this->title,
-			  							"Current_title" => "Sửa hàng hóa",
-			  							"Path"	=> $this->path,
-		  								"Breadcrumb" => $this->breadcrumb,
 		  								"Categorys" => $categorys,
 		  								"Trademarks" => $trademarks,
 		  								"Item"		=> $item,

@@ -5,15 +5,16 @@
                     <a href=""><img src="public/images/viettelstore-logo.png" alt=""></a>
                 </div>
                 <div class="col-5 offset-1 header__search">
-                    <form action="" class="search">
-                        <input type="text" class="search__text" placeholder="Bạn cần tìm sản phẩm nào...">
+                    <form action="" class="search" method="post" accept-charset="utf-8" autocomplete="off">
+                        <input type="text" name="search" id="js-search" class="search__text" placeholder="Bạn cần tìm sản phẩm nào...">
                         <button class="btn btn-pramary search__icon"><i class="fal fa-search"></i></button>
+                        <ul class="wrap-suggestion" id="js-wrap-suggestion"></ul>
                     </form>
                 </div>
                 <div class="col-4 header__market">
                     <a href="" class="header__market--address"><i class="fal fa-map-marker-alt"></i>Siêu thị gần nhất</a>	
-                    <a href="" class="header__market--cart"><i class="fal fa-shopping-cart"></i>Giỏ hàng (0)</a>	
-                </div>
+                    <a href="Cart" class="header__market--cart"><i class="fal fa-shopping-cart"></i>Giỏ hàng <?= isset($_SESSION["cart"]) && count($_SESSION["cart"]) != 0 ? "<span style='color: #e02020;'>(".count($_SESSION["cart"]).")</span>" : "<span>(0)</span>" ?></a>	
+                </div> 
             </div>
         </div>
     </header>

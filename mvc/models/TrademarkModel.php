@@ -15,7 +15,11 @@
 
     public function TrademarkByCategory($id){
       $sql = "SELECT * FROM `trademarks` WHERE `category_id` = ".$id ;
-      $result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+      $result = false;
+      if ($this->db->query($sql)) {
+        $result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+      }
       return json_encode($result);
     }
 

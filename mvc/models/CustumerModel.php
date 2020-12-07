@@ -35,9 +35,10 @@
 
     public function CkeckCustumerPhone($phone){
     	$sql = "SELECT * FROM custumers WHERE phone = ".$phone;
-    	$result = $this->db->query($sql);
-    	if ($result) {
-    		return json_encode($result->fetch(PDO::FETCH_ASSOC));
+
+    	$result = false;
+    	if ($this->db->query($sql)) {
+    		return json_encode($this->db->query($sql)->fetch(PDO::FETCH_ASSOC));
     	}else {
     		return json_encode($result);
     	}

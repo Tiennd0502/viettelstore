@@ -1,3 +1,11 @@
+
+.table td, .table th{
+  vertical-align: middle;
+}
+.table td img{
+  width: 75px;
+  height: auto;
+}
 /* Upload image */
 .form-upload{
   background: #e9ecef;
