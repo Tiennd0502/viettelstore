@@ -427,7 +427,31 @@ $(function() {
   		$("#js-wrap-suggestion").hide();
   	};
   });
+
+  // lọc sp theo thương hiệu
+  var trademark = "";
+  $(".js-trademark").click(function(trademark){
+    
+    console.log(trademark);
+    var name = $(this).prop('data-id');
+    if ($(this).hasClass('check')) {
+      $(this).removeClass('check');
+      trademark = trademark.replace(name," ");
+      console.log(trademark);
+    }else{
+      $(this).addClass('check');
+      if (trademark.length != 0) {
+        trademark += ","+ name;
+      }else{
+        trademark += name;
+      };
+      console.log(trademark);
+    }
+  })
+
+  
 })
+
 
 // Gửi đánh giá sản phẩm 
 function InsertEvaluate(){

@@ -22,13 +22,14 @@
     public function Index(){
       $trademarks = $this->TrademarkModel->TrademarkByCategory(1);
       $mobiles = $this->ProductModel->ProductByCategory(1);
+     
       $this->view("home",[
-                  "Page"=> "mobile",
-                  "Background"=> $this->background,
-                  "Trademarks" => $trademarks,
-                  "Mobile" => $mobiles,
-
+                "Page"=> "mobile",
+                "Background"=> $this->background,
+                "Trademarks" => $trademarks,
+                "Mobile" => $mobiles,
       ]);
+     
     }
     public function Detail($id){
       $this->ProductModel->IncreaseViews($id);

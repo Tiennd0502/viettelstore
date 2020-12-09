@@ -18,7 +18,7 @@ if (isset($data["Mobile"])) {
       $trademarks = json_decode($data["Trademarks"],TRUE);
     
 		foreach ($trademarks as $trademark) {?>
-	    <a class="filter__link" href="Dien_thoai/<?= $trademark["name"]?>"><img class="filter__img" src="public/images/trademark/<?= $trademark["path"]?>" alt=""></a>
+	    <a class="filter__link js-trademark" href="javascript:void(0)" data-name="<?= $trademark["name"]?>"><img class="filter__img" src="public/images/trademark/<?= $trademark["path"]?>" alt=""></a>
 		<?php }
 	} ?>
 		<!-- <a class="filter__link check" href=""><img class="filter__img" src="public/images/trademark/28-11-2020/Samsung42-b_25.jpg" alt=""></a> -->
@@ -150,7 +150,7 @@ if (isset($data["Mobile"])) {
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row mobile_hot" >
 	<div class="title">TOP ĐIỆN THOẠI NỖI BẬT</div>
 	<div id="slide-mobile" class="top-product owl-carousel owl-theme ">
 
@@ -209,7 +209,7 @@ if (isset($data["Mobile"])) {
 	</a>
 
 	<?php 
-		if ($index == 25) break;endforeach ?>
+		if ($index == 25) break; endforeach ?>
 	
 </div>
 <div class="row">

@@ -24,17 +24,19 @@
   <div class="slide-detail">
     <div id="detail-img" class="owl-carousel owl-theme">
       <?php 
+      if (!empty($product["image_library"])) {
         foreach ($product["image_library"] as $key => $item) { ?>
           <div class="item" data-hash="img<?= $key ?>">
             <img src="public/images/image_library<?= $item["path"]?>" alt="">
           </div>
-      <?php } ?>
+      <?php }} ?>
     </div>
     <div class="link-img">
       <?php 
+        if (!empty($product["image_library"])) {
         foreach ($product["image_library"] as $key => $item) { ?>
           <a href="Dien-thoai/Detail/<?= $product["infor"]["id"] ?>#img<?= $key ?>"><img src="public/images/image_library<?= $item["path"]?>" alt=""></a>
-      <?php } ?>
+      <?php } } ?>
       
       <!-- <a href="Dien-thoai/Detail/1#three"><img src="public/images/200-note-20-ultra-5g-180x125.png" alt=""></a> -->
     </div>
