@@ -100,8 +100,11 @@ textarea {
     color: #000;
     margin-right: 0.5rem;
 }
-.hide,.d-none{
+.hide{
 	display: none !important;
+}
+.d-none{
+  display: none;
 }
 @for $i from 1 through 12 {
     .col-#{$i} {
@@ -679,7 +682,6 @@ textarea {
   }
   &__list-mobile{
     @include flex(row, flex-start, stretch, wrap);
-    margin-top: 4.5rem;
     // border-top: 1px solid $Border ;
     // border-left: 1px solid $Border ;
     .product__item {
@@ -729,6 +731,14 @@ textarea {
     }
   }
 }
+.mobile-hot{
+  margin-bottom: 4.5rem;
+  .title{
+    display: block;
+    margin: 2rem 0;
+    padding-left: 0;
+  }
+}
 .icon {
   display: inline-block;
   border-radius: 1rem;
@@ -763,7 +773,10 @@ textarea {
 }
 .wear-and-watch {
   background: $White;
-  padding: 1.5rem;
+  padding-top: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 #slide-watch {
@@ -775,6 +788,7 @@ textarea {
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  padding-left: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

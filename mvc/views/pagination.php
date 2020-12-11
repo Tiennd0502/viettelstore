@@ -12,12 +12,21 @@
 			</div>
 			<div class="product__name"><?= $product["name"]?></div>
 			<div class="product__price">
-				<span class="text13">Giá online:</span> 13.990.000 ₫
+				<span class="text13">Giá online:</span> 
+				<?php if ($product["discount"] != 0){ 
+					echo number_format(round($product["price"] - $product["price"] * $product["discount"] / 100, -4),0,",", ".");
+				}else { 
+					echo number_format($product["price"],0,",",".");
+				} ?> ₫
 			</div>
-			<div class="sale">
+
+			<?php if ($product["discount"] != 0): ?>
+				<div class="sale">
 					Giá bán lẻ:
-				<span> 12.990.000 ₫</span>
+				<span> <?= number_format(round($product["price"] - $product["price"] * $product["discount"] / 100, -4),0,",", ".")  ?> ₫</span>
 			</div>
+			<?php endif ?>
+			
 			<div class="content__promo">
 				<ul>
 					<li>Trả góp 0% trên giá bán lẻ </li>

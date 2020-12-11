@@ -138,5 +138,12 @@
 									"Data" => $data,
 			]);
 		}
+		public function SearchTrademark(){
+			$trademark = $_POST["trademark"];
+			$data     = $this->ProductModel->ProductByTrademark($trademark);
+			$this->view("pagination",[
+									"Data" => $data,
+			]);
+		}
 	}
 ?>

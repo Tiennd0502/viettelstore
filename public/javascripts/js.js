@@ -177,7 +177,7 @@ $(function() {
       "/public/javascript/lazysizes.min.js";
       document.body.appendChild(script);
     }
-    $(".footer-link,.js-content-filter ").hide();
+    $(".footer-link").hide();
     // Show link footer
     $("#show-link").click(function() {
     	$(".footer-link").toggle();
@@ -192,19 +192,17 @@ $(function() {
 
     // control  filter-feature
     $(".js-open-filter").click(function() {
-        // $(".js-open-filter").next().slideUp(500, "linear");
-        $(this).next().slideToggle(500, "linear");
-
-      })
-        // 
-        $(".js-close-filter").click(function() {
-        	$(this).parent().slideUp(500, "linear");
-        })
-        // control fill-sort
-        $(".js-closesort ~ a").click(function() {
-        	$(".js-closesort ~ a").removeClass("check");
-        	$(this).addClass("check");
-        });     
+      $(this).next().slideToggle(500, "linear");
+    });
+    // 
+    $(".js-close-filter").click(function() {
+    	$(this).parent().slideUp(500, "linear");
+    })
+    // control fill-sort
+    $(".js-closesort ~ a").click(function() {
+    	$(".js-closesort ~ a").removeClass("check");
+    	$(this).addClass("check");
+    });     
     // xem thêm bài viết trong detail
     $(".js-read-more").click(function () {
     	if($(this).prev().css("height") != "600px"){
@@ -429,24 +427,41 @@ $(function() {
   });
 
   // lọc sp theo thương hiệu
-  var trademark = "";
-  $(".js-trademark").click(function(trademark){
+  let trademark = "";
+  $(".js-trademark").click(function(){
+    $("#mobile-hot").hide();
+    let id = $(this).attr('data-id');
     
-    console.log(trademark);
-    var name = $(this).prop('data-id');
     if ($(this).hasClass('check')) {
       $(this).removeClass('check');
-      trademark = trademark.replace(name," ");
-      console.log(trademark);
+      trademark = trademark.replace(id +",","");
     }else{
       $(this).addClass('check');
-      if (trademark.length != 0) {
-        trademark += ","+ name;
-      }else{
-        trademark += name;
-      };
-      console.log(trademark);
+      trademark += id + ",";
     }
+    // console.log(trademark);
+    if ($.trim(trademark) == "") {
+      window.location.reload(true);
+    }else{
+      // console.log(trademark.slice(0,trademark.lastIndexOf(",")));
+      $.ajax({
+        url: 'Ajax/SearchTrademark',
+        type: 'POST',
+        data: {trademark: trademark.slice(0,trademark.lastIndexOf(","))},
+      })
+      .done(function(data) {
+        $("#list-mobile").html(data);
+        // console.log("success");
+      })
+      .fail(function() {
+        // console.log("error");
+      })
+      .always(function() {
+        // console.log("complete");
+      });
+      
+    };
+    
   })
 
   // Phân trang mobile

@@ -18,7 +18,7 @@ if (isset($data["Mobile"])) {
       $trademarks = json_decode($data["Trademarks"],TRUE);
     
 		foreach ($trademarks as $trademark) {?>
-	    <a class="filter__link js-trademark" href="javascript:void(0)" data-name="<?= $trademark["name"]?>"><img class="filter__img" src="public/images/trademark/<?= $trademark["path"]?>" alt=""></a>
+	    <a class="filter__link js-trademark" href="javascript:void(0)" data-id="<?= $trademark["id"]?>" data-name="<?= $trademark["name"]?>"><img class="filter__img" src="public/images/trademark/<?= $trademark["path"]?>" alt=""></a>
 		<?php }
 	} ?>
 		<!-- <a class="filter__link check" href=""><img class="filter__img" src="public/images/trademark/28-11-2020/Samsung42-b_25.jpg" alt=""></a> -->
@@ -36,7 +36,7 @@ if (isset($data["Mobile"])) {
 		<div class="filter__feature">
 				<label class="criteria js-open-filter" id="js-filter-feature"> Tính năng<i class="fa fa-caret-down"></i>
 				</label>
-				<div class="content__feature js-content-filter">
+				<div class="content__feature d-none js-content-filter ">
 						<label class="closefeature js-close-filter" id="js-close-filter"><i class="fal fa-times-circle"></i></label>
 						<div class="feature__list">
 								<div class="feature__item">
@@ -139,7 +139,7 @@ if (isset($data["Mobile"])) {
 		</div>
 		<div class="filter__sort">
 				<span class="criteria js-open-filter" id="js-sort"> Sản phẩm nổi bật<i class="fa fa-caret-down"></i></span>
-				<div class="content__sort js-content-filter">
+				<div class="content__sort d-none js-content-filter">
 						<label class="closesort js-close-filter "><i class="fal fa-times-circle"></i></label>
 						<a href="javascript:void(0)" class="check"><i class="fal fa-check"></i> Sản phẩm nổi bật</a>
 						<a href="javascript:void(0)"><i class="fal fa-check"></i> Mới nhất</a>
@@ -150,7 +150,7 @@ if (isset($data["Mobile"])) {
 		</div>
 	</div>
 </div>
-<div class="row mobile_hot" >
+<div class="row mobile-hot" id="mobile-hot">
 	<div class="title">TOP ĐIỆN THOẠI NỖI BẬT</div>
 	<div id="slide-mobile" class="top-product owl-carousel owl-theme ">
 
@@ -182,8 +182,7 @@ if (isset($data["Mobile"])) {
 	</div>
 </div>
 <div class="row product__list product__list-mobile" id="list-mobile">
-	<?php $index = 0; ?>
-	<?php foreach ($mobiles as $mobile): $index ++ ;?>
+	<?php foreach ($mobiles as $mobile):?>
 		
 	<a class="product__item" href="Dien-thoai/Detail/<?= $mobile['id']?>">
 		<div class="product__img">
@@ -194,12 +193,20 @@ if (isset($data["Mobile"])) {
 		</div>
 		<div class="product__name"><?= $mobile["name"]?></div>
 		<div class="product__price">
-			<span class="text13">Giá online:</span> 13.990.000 ₫
-		</div>
-		<div class="sale">
-				Giá bán lẻ:
-			<span> 12.990.000 ₫</span>
-		</div>
+				<span class="text13">Giá online:</span> 
+				<?php if ($mobile["discount"] != 0){ 
+					echo number_format(round($mobile["price"] - $mobile["price"] * $mobile["discount"] / 100, -4),0,",", ".");
+				}else { 
+					echo number_format($mobile["price"],0,",",".");
+				} ?> ₫
+			</div>
+
+			<?php if ($mobile["discount"] != 0): ?>
+				<div class="sale">
+					Giá bán lẻ:
+				<span> <?= number_format(round($mobile["price"] - $mobile["price"] * $mobile["discount"] / 100, -4),0,",", ".")  ?> ₫</span>
+			</div>
+			<?php endif ?>
 		<div class="content__promo">
 			<ul>
 				<li>Trả góp 0% trên giá bán lẻ </li>
@@ -208,8 +215,7 @@ if (isset($data["Mobile"])) {
 		</div>
 	</a>
 
-	<?php 
-		if ($index == 15) break; endforeach ?>
+	<?php endforeach ?>
 	
 </div>
 <div class="row">

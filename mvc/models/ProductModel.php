@@ -283,6 +283,15 @@
       return json_encode($result);
     }
 
+    public function ProductByTrademark($trademark){
+       $sql = "SELECT * FROM products WHERE `products`.`trademark_id` IN (".$trademark .") ORDER BY id ASC LIMIT 0,25";
+      $result = false;
+      if ($this->db->query($sql)) {
+        $result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+      }
+      return json_encode($result);
+    }
     public function IncreaseViews($id){
       $sql = "SELECT `number_view` FROM products WHERE `products`.`id`='".$id."'";
       $numberView = $this->db->query($sql)->fetch(PDO::FETCH_ASSOC);
