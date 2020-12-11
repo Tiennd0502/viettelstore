@@ -130,5 +130,13 @@
 			$data = $this->ProductModel->SearchProduct($keyword);
 			echo $data;
 		}
+		public function Pagination(){
+			$page     = $_POST["page"];
+			$category = $_POST["category"];
+			$data     = $this->ProductModel->ViewMore($page,$category);
+			$this->view("pagination",[
+									"Data" => $data,
+			]);
+		}
 	}
 ?>

@@ -181,7 +181,7 @@ if (isset($data["Mobile"])) {
 		
 	</div>
 </div>
-<div class="row product__list product__list-mobile">
+<div class="row product__list product__list-mobile" id="list-mobile">
 	<?php $index = 0; ?>
 	<?php foreach ($mobiles as $mobile): $index ++ ;?>
 		
@@ -209,9 +209,9 @@ if (isset($data["Mobile"])) {
 	</a>
 
 	<?php 
-		if ($index == 25) break; endforeach ?>
+		if ($index == 15) break; endforeach ?>
 	
 </div>
 <div class="row">
-	<a href="javascript:void(0)" class="show-more js-show-more">Xem thêm sản phẩm <i class="fa fa-caret-down"></i></a>
+	<a href="javascript:void(0)" class="show-more js-show-more" data-page="1" data-category="<?= $data["CategoryId"]?>">Xem thêm sản phẩm <i class="fa fa-caret-down"></i></a>
 </div>

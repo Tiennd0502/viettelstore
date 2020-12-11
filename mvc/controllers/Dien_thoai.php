@@ -28,6 +28,7 @@
                 "Background"=> $this->background,
                 "Trademarks" => $trademarks,
                 "Mobile" => $mobiles,
+                "CategoryId" => "1",
       ]);
      
     }

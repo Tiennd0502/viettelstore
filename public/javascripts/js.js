@@ -449,7 +449,37 @@ $(function() {
     }
   })
 
-  
+  // Phân trang mobile
+  $(".js-show-more").click(function(){
+    let page = $(this).attr('data-page');
+    let category = $(this).attr('data-category');
+    let el = $(this);
+    page = parseInt(page);
+    $.ajax({
+      url: 'Ajax/Pagination',
+      type: 'POST',
+      data: {
+              page: page,
+              category :category,
+            },
+    })
+    .done(function(data) {
+      if (data != "") {
+        $("#list-mobile").append(data);
+        console.log(data);
+      }else{
+        el.hide();
+      };
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+    $(this).attr('data-page', page + 1);
+  })
+
 })
 
 

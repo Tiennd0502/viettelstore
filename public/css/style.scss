@@ -712,6 +712,9 @@ textarea {
     }
     .product__name{
       font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .content__promo{
       font-size: 1.2rem;
@@ -735,7 +738,7 @@ textarea {
   -o-border-radius: 1rem;
   color: $White;
   font-size: 1.2rem;
-  padding: 0.2rem 1rem;
+  padding: 0.1rem 1rem;
   margin-bottom: 0.5rem;
   &-limit {
     background-color: $Hot;

@@ -784,6 +784,9 @@ textarea {
 }
 .product__list-mobile .product__name {
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .product__list-mobile .content__promo {
   font-size: 1.2rem;
@@ -802,7 +805,7 @@ textarea {
   -o-border-radius: 1rem;
   color: #fff;
   font-size: 1.2rem;
-  padding: 0.2rem 1rem;
+  padding: 0.1rem 1rem;
   margin-bottom: 0.5rem;
 }
 .icon-limit {

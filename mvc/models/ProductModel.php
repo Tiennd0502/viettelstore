@@ -2,7 +2,7 @@
 	class ProductModel extends DataBase{
 
     public function AllProducts(){
-    	$sql = "SELECT * FROM `products`";
+    	$sql = "SELECT * FROM `products` ORDER BY id ASC";
     	$result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     	return json_encode($result);
     }
@@ -191,9 +191,9 @@
       $sql = "UPDATE products SET `category_id` ='".$data["category_id"]."', `trademark_id` ='".$data["trademark_id"]."', `name`='".$data["name"].$image.$image_hot."', `price`='".$data["price"]."', `description`='".$data["description"]."', `discount`='".$data["discount"]."', `hot`='".$data["hot"]."', `installment`='".$data["installment"]."', `active`='".$data["active"]."', `updated_time`='".time()."' WHERE `products`.`id` = ".$data["id"];
       $result = false;
       if ($this->db->exec($sql)) {
-        $sql = "UPDATE product_details SET `screen`='".$data["screen"]."', `operating_system`='".$data["operating_system"]."', `rear_camera`='".$data["rear_camera"]."', `front_camera`='".$data["front_camera"]."', `cpu`='".$data["cpu"]."', `ram`='".$data["ram"]."', `internal_memory`='".$data["internal_memory"]."', `memory_stick`='".$data["memory_stick"]."', `sim`='".$data["sim"]."', `battery_capacity`='".$data["battery_capacity"]."', `port_connect`='".$data["port_connect"]."', `conversation`='".$data["conversation"]."', `graphic_card`='".$data["graphic_card"]."', `design`='".$data["design"]."', `size`='".$data["size"]."', `launch_time`='".$data["launch_time"]."', `face_diameter`='".$data["face_diameter"]."', `face_material`='".$data["face_material"]."', `frame_material`='".$data["frame_material"]."', `wire_material`='".$data["wire_material"]."', `wire_width`='".$data["wire_width"]."', `utilities`='".$data["utilities"]."', `waterproof`='".$data["waterproof"]."', `battery_life_time`='".$data["battery_life_time"]."', `object_use`='".$data["object_use"]."' WHERE `product_details`.`id`=".$data["id"];
+       $sql = "UPDATE product_details SET `screen`='".$data["screen"]."', `operating_system`='".$data["operating_system"]."', `rear_camera`='".$data["rear_camera"]."', `front_camera`='".$data["front_camera"]."', `cpu`='".$data["cpu"]."', `ram`='".$data["ram"]."', `internal_memory`='".$data["internal_memory"]."', `memory_stick`='".$data["memory_stick"]."', `sim`='".$data["sim"]."', `battery_capacity`='".$data["battery_capacity"]."', `port_connect`='".$data["port_connect"]."', `conversation`='".$data["conversation"]."', `graphic_card`='".$data["graphic_card"]."', `design`='".$data["design"]."', `size`='".$data["size"]."', `launch_time`='".$data["launch_time"]."', `face_diameter`='".$data["face_diameter"]."', `face_material`='".$data["face_material"]."', `frame_material`='".$data["frame_material"]."', `wire_material`='".$data["wire_material"]."', `wire_width`='".$data["wire_width"]."', `utilities`='".$data["utilities"]."', `waterproof`='".$data["waterproof"]."', `battery_life_time`='".$data["battery_life_time"]."', `object_use`='".$data["object_use"]."' WHERE `product_details`.`id`=".$data["id"];
+        // echo $sql;exit;
         if ($this->db->exec($sql)) {
-          // echo "Đã update đk product-detail";exit;
           $productId = $data["id"];
           if(isset($resultUploads["path"]) && !empty($resultUploads["path"])){ 
             $insertValues = "";
@@ -206,16 +206,19 @@
             }
             $sql = "INSERT INTO image_library VALUES ".$insertValues;
             if (!$this->db->exec($sql)) {
+              echo "ddax upload thanh cong anh";exit;
               return json_encode($result);
             }
+            echo "k thanh cong";exit;
           }
           
           $result = true;
           return json_encode($result);
         }else {
-          // echo "chưa update đk product-details";exit;
+          echo "chưa update đk product-details";exit;
           return json_encode($result);
         }
+        
       }else {
         return json_encode($result);
       }
@@ -270,7 +273,7 @@
       if ($image_hot) {
         $sql = "SELECT * FROM products WHERE `products`.`category_id`=".$id . " AND `products`.`image_hot` != ''";
       }else {
-        $sql = "SELECT * FROM products WHERE `products`.`category_id`=".$id;
+        $sql = "SELECT * FROM products WHERE `products`.`category_id`=".$id ." ORDER BY id ASC LIMIT 0,15";
       }
       $result = false;
       if ($this->db->query($sql)) {
@@ -286,6 +289,12 @@
       $number = $numberView["number_view"] + 1;
       $sql = "UPDATE products SET `number_view`='".$number . "' WHERE `id`='".$id."'";
       $this->db->query($sql);
+    }
+
+    public function ViewMore($page,$category,$numberItem = 15){
+      $sql = "SELECT * FROM `products` WHERE `products`.`category_id` ='".$category."' ORDER BY id ASC LIMIT ".$page * $numberItem."," .$numberItem;
+      $result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+      return json_encode($result);
     }
 	}
  ?>
