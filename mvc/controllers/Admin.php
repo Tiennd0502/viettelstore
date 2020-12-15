@@ -10,7 +10,6 @@
 	  public function Index(){
 	  	if (isset($_SESSION["admin"])) {
 	  		$this->view("admin",[
-	  							"Admin_navbar" => $this->admin_navbar,
 	  							"Page" => "dashboard", 
 	  							"Page_title"=>"admin_page_header",
 	  							"Title" => "Bảng điều khiển",
@@ -29,10 +28,8 @@
 		  	  $result = $this->UserModel->Login($data); 
 		  	  if ($result =="false") {
 		  	  	$this->view("page_login",[
-		  							"Admin_navbar" => $this->admin_navbar,
 		  							"Page_title"=>"admin_page_header",
 		  							"Title" => "Bảng điều khiển",
-		  							"Breadcrumb" => $this->breadcrumb,
 		  							"Error" => "",
 		  			]);
 		  	  }else{
@@ -41,7 +38,6 @@
 		  							"Page" => "dashboard", 
 		  							"Page_title"=>"admin_page_header",
 		  							"Title" => "Bảng điều khiển",
-		  							"Breadcrumb" => $this->breadcrumb,
 		  							"Admin" => $result,
 		  			]);
 		  	  }
