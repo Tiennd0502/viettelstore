@@ -1,14 +1,11 @@
 <?php  
 	class Admin extends Controller{
 
-		public $breadcrumb = "Bảng điều khiển";
-		public $admin_navbar = "admin_navbar";
 		public $UserModel;
 
 		public $CategoryModel;
 		public function __construct(){
 			$this->UserModel = $this->model("UserModel");
-			// $this->CategoryModel = $this->model("CategoryModel");
 		}
 	  public function Index(){
 	  	if (isset($_SESSION["admin"])) {
@@ -17,7 +14,6 @@
 	  							"Page" => "dashboard", 
 	  							"Page_title"=>"admin_page_header",
 	  							"Title" => "Bảng điều khiển",
-	  							"Breadcrumb" => $this->breadcrumb,
 	  			]);
 	  	}else{
 	  		if (isset($_POST["login"])) {

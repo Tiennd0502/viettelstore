@@ -81,6 +81,21 @@
       </tbody>
     </table>
   </div>
+  <div class="row">
+    <div class="col-md-12 text-right mt-2">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-end">
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="first">First</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="">&laquo;</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="1">1</a></li>
+          <li class="page-item active" aria-current="page"><a class="page-link " href="javascript:void(0)" data-page="2">2</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="3">3</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="">&raquo;</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="last">Last</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
   <button type="button" class="btn btn-outline-dark" id="js-selectAll">Chọn tất cả</button>
   <button type="button" class="btn btn-outline-dark" id="js-deselectAll">Bỏ chọn tất cả</button>
   <button type="submit" class="btn btn-outline-dark">Xóa các mục đã chọn</button>

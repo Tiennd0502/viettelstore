@@ -4,7 +4,6 @@
     public function AllCategorys(){
     	$sql = "SELECT * FROM categorys";
     	$result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    	// return $result;
     	return json_encode($result);
     }
     public function GetOneCategory($id){

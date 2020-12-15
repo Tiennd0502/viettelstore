@@ -2,7 +2,7 @@
 	class ProductModel extends DataBase{
 
     public function AllProducts(){
-    	$sql = "SELECT * FROM `products` ORDER BY id ASC";
+    	$sql = "SELECT * FROM `products` ORDER BY id ASC LIMIT 0,15";
     	$result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     	return json_encode($result);
     }
